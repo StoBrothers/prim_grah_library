@@ -16,15 +16,13 @@ https://maven.apache.org
 Introduction
 ------------
 
-   A Minimum Spanning Tree is a tree whose sum of length/weight of edges is minimum as possible.
+   A Minimum Spanning Tree (MST) is a tree whose sum of length/weight of edges is minimum as possible.
 For example, if you want to setup communication between a set of cities, then you may want to
 use the least amount of wire as possible. MST can be used to find the network path and wire cost
 estimate.
-   This library allows building the path between two vertices use Prims algorithm with weight edges.
-Implementation of this library based on the Depth-First Search (DFS) algorithm.
-The DFS algorithm is starting from starting point and go into the depth of the graph
-until it reaches a dead end and then move up to the parent node.
 
+   This library allows building the path between two vertices use MST and Prim's algorithm with weight edges.
+Implementation of this library allow to build MST and calculate path between two vertexes.
 
 ```
 Procedure PrimsMST(Graph):     // here Graph is a non-empty connected weighted graph
@@ -77,20 +75,32 @@ This undirected graph with weight of edges used in tests.
 
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/1.png)
 
-First step.  Define . 
+1. Define first edge with min weight. 
 --------------------------
 
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/2.png)
 
+2. Define next edge with min weight from edges of 2 vertexes. 
+--------------------------
 
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/3.png)
 
+3. Define next edge with min weight from edges of visited vertexes. 
+--------------------------
+
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/4.png)
+
+4. Define next edge with min weight from edges of visited vertexes. 
+--------------------------
 
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/5.png)
 
+5. Define next edge with min weight from edges of visited vertexes. 
+--------------------------
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/6.png)
 
+6. Minimum Spanning Tree (MST). 
+--------------------------
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/7.png)
 
 
