@@ -152,7 +152,7 @@ final class GraphImpl<T> implements Graph<T> {
 		return false;
 	}
 	/**
-	 * Implementation of Prims algorithm for building path with min weight of edges.
+	 * Implementation of Prim's algorithm for building path with min weight of edges (MST).
 	 */
 	@Override
 	public Set<Edge<T>> buildMST(final Vertex<T> startVertex) {
@@ -170,6 +170,7 @@ final class GraphImpl<T> implements Graph<T> {
 		visitedVertices.add(currentVertex); // add vertex to visited set
 		Set<Edge<T>> edges = new TreeSet<>(new EdgeComparator<>());
 		edges.addAll(vertices.get(currentVertex)); // get edges for selected vertex)
+		
 		while (notVisitedVertex.size() != 0) {// checking not visited vertices
 			if (edges.size() > 0) {
 				Iterator<Edge<T>> iterator = edges.iterator();// iterator for sorted collection by MIN weight
