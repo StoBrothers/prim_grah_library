@@ -1,4 +1,4 @@
-# Implementation of Prims graph algorithm library
+# Implementation of Prim's graph algorithm library
 ------------
 
 ##### Technologies: Java 8, JUnit, Lombok.
@@ -24,6 +24,22 @@ estimate.
 Implementation of this library based on the Depth-First Search (DFS) algorithm.
 The DFS algorithm is starting from starting point and go into the depth of the graph
 until it reaches a dead end and then move up to the parent node.
+
+
+--------------------------------------------------------------------------------------
+Procedure PrimsMST(Graph):     // here Graph is a non-empty connected weighted graph
+Vnew[] = {x}                   // New subgraph Vnew with source node x
+Enew[] = {}
+while Vnew is not equal to V
+    u -> a node from Vnew
+    v -> a node that is not in Vnew such that edge u-v has the minimum cost
+                               // if two nodes have same weight, pick any of them
+    add v to Vnew
+    add edge (u, v) to Enew
+end while
+Return Vnew and Enew
+--------------------------------------------------------------------------------------
+
 
 Java classes
 --------------------------
@@ -60,9 +76,7 @@ This undirected graph with weight of edges used in tests.
 
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/1.png)
 
-
-
-This directed graph used in tests.
+First step.  Define . 
 --------------------------
 
 ![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/2.png)
