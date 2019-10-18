@@ -38,6 +38,8 @@ end while
 Return Vnew and Enew
 
 ```
+Time Complexity will be O(m log n) where n vertices and m edges of the MST.
+
 
 
 Java classes
