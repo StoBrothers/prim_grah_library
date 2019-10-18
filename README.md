@@ -108,7 +108,7 @@ This undirected graph with a weight of edges used in tests.
 Example of test results
 --------------------------
 
-https://github.com/StoBrothers/graph_library/blob/master/test.log
+https://github.com/StoBrothers/prim_grah_library/blob/master/test.log
 
 
 
