@@ -31,7 +31,7 @@ Java classes
 - Vertex - wrapper for user defined type.
 - Edge - edge between two vertices.
 - Graph - interface for working with graph instance.
-- GraphImpl - Implementation of directed and undirected graphs.
+- GraphImpl - Implementation of graphs.
 - GraphsFactory - Factory for building directed and undirected graphs.
 - GraphType - types of graphs.
 
@@ -39,7 +39,6 @@ Test java classes
 --------------------------
 
 GraphUnitTest  - unit test
-TestUtil - Utility for tests
 
 How to build the project?
 --------------------------
@@ -56,17 +55,29 @@ How to run tests?
 mvn test
 ```
 
-This undirected graph used in tests.
+This undirected graph with weight of edges used in tests.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/graph_library/blob/master/star_undirected.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/1.png)
 
 
 
 This directed graph used in tests.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/graph_library/blob/master/star_directed.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/2.png)
+
+
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/3.png)
+
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/4.png)
+
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/5.png)
+
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/6.png)
+
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/7.png)
+
 
 
 Example of test results
