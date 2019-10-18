@@ -27,12 +27,12 @@ final class GraphImpl<T> implements Graph<T> {
 	/**
 	 * Graph
 	 */
-	private Map<Vertex<T>, List<Edge<T>>> vertexes = new HashMap<>();
+	private Map<Vertex<T>, List<Edge<T>>> vertices = new HashMap<>();
 
 	/**
 	 * Graph with MIN path created after building path with minimal weight of edges.
 	 */
-	private Set<Edge<T>> minGraph = new HashSet<>();
+	private Set<Edge<T>> MST = new HashSet<>();
 
 	/**
 	 * Constructor.
@@ -45,7 +45,7 @@ final class GraphImpl<T> implements Graph<T> {
 
 	@Override
 	public void addVertex(final Vertex<T> vertex) {
-		this.vertexes.putIfAbsent(vertex, new ArrayList<>());
+		this.vertices.putIfAbsent(vertex, new ArrayList<>());
 	}
 
 	@Override
@@ -54,7 +54,7 @@ final class GraphImpl<T> implements Graph<T> {
 	}
 
 	@Override
-	public void addEdge(List<Vertex<T>> inpVertexes, int start, int end, int weight) {
+	public void addEdge(List<Vertex<T>> inpVertices, int start, int end, int weight) {
 
 		if (start > end) { // Order name of edge
 			int temp = start;
@@ -62,8 +62,8 @@ final class GraphImpl<T> implements Graph<T> {
 			end = temp;
 		}
 
-		Vertex<T> vertex1 = inpVertexes.get(start - 1);
-		Vertex<T> vertex2 = inpVertexes.get(end - 1);
+		Vertex<T> vertex1 = inpVertices.get(start - 1);
+		Vertex<T> vertex2 = inpVertices.get(end - 1);
 
 		Edge<T> edge = new Edge<>(vertex1, vertex2, weight);
 
@@ -72,7 +72,7 @@ final class GraphImpl<T> implements Graph<T> {
 	}
 
 	private void addEdge(Vertex<T> vertex1, Edge<T> edge) {
-		List<Edge<T>> edges = this.vertexes.get(vertex1);
+		List<Edge<T>> edges = this.vertices.get(vertex1);
 		if (!edges.contains(edge)) {
 			edges.add(edge);
 		}
@@ -84,7 +84,7 @@ final class GraphImpl<T> implements Graph<T> {
 	 * @param edge
 	 */
 	private void addDirectedGraphEdge(final Edge<T> edge) {
-		List<Edge<T>> edges = this.vertexes.get(edge.getStartVertex());
+		List<Edge<T>> edges = this.vertices.get(edge.getStartVertex());
 		if (!edges.contains(edge)) {
 			edges.add(edge);
 		}
@@ -97,7 +97,7 @@ final class GraphImpl<T> implements Graph<T> {
 	 */
 	private void addUndirectedGraphEdge(final Edge<T> edge) {
 		addDirectedGraphEdge(edge);
-		List<Edge<T>> edges = this.vertexes.get(edge.getEndVertex());
+		List<Edge<T>> edges = this.vertices.get(edge.getEndVertex());
 		if (!edges.contains(edge)) {
 			edges.add(edge);
 		}
@@ -122,7 +122,7 @@ final class GraphImpl<T> implements Graph<T> {
 
 		logger.debug("Visit:" + startVertex.toString());
 
-		List<Edge<T>> edges = this.minGraph.stream()
+		List<Edge<T>> edges = this.MST.stream()
 				.filter(t -> ((t.getStartVertex() == startVertex) || (t.getEndVertex() == startVertex)))
 				.collect(Collectors.toList());//
 		for (Edge<T> current : edges) {
@@ -156,21 +156,21 @@ final class GraphImpl<T> implements Graph<T> {
 	 */
 	@Override
 	public Set<Edge<T>> buildMST(final Vertex<T> startVertex) {
-		this.minGraph = new HashSet<>();
-		List<Vertex<T>> arrayOfVertexes = vertexes.keySet().stream().filter(t -> !t.equals(startVertex))
-				.collect(Collectors.toList());
+		this.MST = new HashSet<>();
+		List<Vertex<T>> arrayOfVertices = vertices.keySet().stream().filter(t -> !t.equals(startVertex))
+				.collect(Collectors.toList());// collect all vertices except started vertex
 
 		Set<Vertex<T>> notVisitedVertex = new HashSet<>();
-		notVisitedVertex.addAll(arrayOfVertexes);
+		notVisitedVertex.addAll(arrayOfVertices);
 
-		Set<Vertex<T>> visitedVertexes = new HashSet<>();
+		Set<Vertex<T>> visitedVertices = new HashSet<>();
 		Set<Edge<T>> graph = new HashSet<>();
 
 		Vertex<T> currentVertex = startVertex;
-		visitedVertexes.add(currentVertex); // add vertex to visited set
+		visitedVertices.add(currentVertex); // add vertex to visited set
 		Set<Edge<T>> edges = new TreeSet<>(new EdgeComparator<>());
-		edges.addAll(vertexes.get(currentVertex)); // get edges for selected vertex)
-		while (notVisitedVertex.size() != 0) {// checking not visited vertexes
+		edges.addAll(vertices.get(currentVertex)); // get edges for selected vertex)
+		while (notVisitedVertex.size() != 0) {// checking not visited vertices
 			if (edges.size() > 0) {
 				Iterator<Edge<T>> iterator = edges.iterator();// iterator for sorted collection by MIN weight
 				Edge<T> currentMinEdge = null; //
@@ -178,31 +178,31 @@ final class GraphImpl<T> implements Graph<T> {
 					currentMinEdge = iterator.next();// get edge with MIN weight for selected vertex
 					Vertex<T> vertexStart = currentMinEdge.getStartVertex();// get first vertex
 					Vertex<T> vertexEnd = currentMinEdge.getEndVertex();// get second vertex
-					if (visitedVertexes.contains(vertexStart) && visitedVertexes.contains(vertexEnd)) {
-						// if both of vertexes visited early then get next MIN edge
+					if (visitedVertices.contains(vertexStart) && visitedVertices.contains(vertexEnd)) {
+						// if both of vertices visited early then get next MIN edge
 						continue;
-					} else if (visitedVertexes.contains(vertexStart)) {// if visited only first vertex not second
-						visitedVertexes.add(currentMinEdge.getEndVertex());// add new visited vertex
+					} else if (visitedVertices.contains(vertexStart)) {// if visited only first vertex not second
+						visitedVertices.add(currentMinEdge.getEndVertex());// add new visited vertex
 						notVisitedVertex.remove(currentMinEdge.getEndVertex());// remove this vertex from non visited
-																				// vertexes
+																				// vertices
 						graph.add(currentMinEdge);// add this edge to the graph
-						edges.addAll(vertexes.get(vertexEnd));// add all edges for new vertex to list
+						edges.addAll(vertices.get(vertexEnd));// add all edges for new vertex to list
 						break;
-					} else if (visitedVertexes.contains(vertexEnd)) {
-						visitedVertexes.add(currentMinEdge.getStartVertex());
+					} else if (visitedVertices.contains(vertexEnd)) {
+						visitedVertices.add(currentMinEdge.getStartVertex());
 						notVisitedVertex.remove(currentMinEdge.getStartVertex());
 						graph.add(currentMinEdge);
-						edges.addAll(vertexes.get(vertexStart));// get edges for selected vertex
+						edges.addAll(vertices.get(vertexStart));// get edges for selected vertex
 						break;
 					} else {
-						// if both of vertexes is not visited and don't have link to start vertex
+						// if both of vertices is not visited and don't have link to start vertex
 						continue;
 					}
 				}
 			}
 		}
 
-		this.minGraph = graph;
+		this.MST = graph;
 		return graph;
 	}
 
@@ -211,6 +211,7 @@ final class GraphImpl<T> implements Graph<T> {
 	 *
 	 * @param <T>
 	 */
+	@SuppressWarnings("hiding")
 	private class EdgeComparator<T> implements Comparator<Edge<T>> {
 
 		@Override
