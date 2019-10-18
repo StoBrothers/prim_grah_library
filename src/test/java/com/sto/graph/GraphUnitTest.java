@@ -65,7 +65,7 @@ public class GraphUnitTest {
 		graph.addEdge(vertexes, 2, 3, 18);// 2-3
 
 		
-		this.graph_edges = graph.buildMinWeightGraph(vertexes.get(0)); //build min weight graph
+		this.graph_edges = graph.buildMST(vertexes.get(0)); //build min weight graph
 
 		logger.info("Result graph with MIN path:" + this.graph_edges.size());
 
@@ -75,7 +75,7 @@ public class GraphUnitTest {
 	public void test_building_min_graph_when_expected_MIN_graph_thenPrintPath_ver1() {
 
 		logger.info("Building and checking graph with MIN path:");
-		this.graph_edges = graph.buildMinWeightGraph(vertexes.get(0)); //build min weight graph
+		this.graph_edges = graph.buildMST(vertexes.get(0)); //build min weight graph
 		List<Edge<String>> buildedGraph = graph_edges.stream().sorted(new GraphComparator<String>()).collect(Collectors.toList());
 		
 		logger.debug("Buided min path graph with edges:");

@@ -3,6 +3,13 @@ package com.sto.graph;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Interface for work with MST.  
+ * 
+ * @author Sergey Stotskiy
+ *
+ * @param <T>
+ */
 public interface Graph <T> {
 	
 	/** Adds vertex to the graph.
@@ -43,7 +50,7 @@ public interface Graph <T> {
 	 * @param startVertex
 	 * @return
 	 */
-	public Set<Edge<T>> buildMinWeightGraph(final Vertex<T> startVertex);
+	public Set<Edge<T>> buildMST(final Vertex<T> startVertex);
 
 
 }

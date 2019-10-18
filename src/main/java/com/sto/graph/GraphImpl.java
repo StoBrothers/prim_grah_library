@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Implementation of Prims algorithm.
+ * Implementation of Prim's algorithm.
  * 
  * @author Sergey Stotskiy
  */
@@ -155,7 +155,7 @@ final class GraphImpl<T> implements Graph<T> {
 	 * Implementation of Prims algorithm for building path with min weight of edges.
 	 */
 	@Override
-	public Set<Edge<T>> buildMinWeightGraph(final Vertex<T> startVertex) {
+	public Set<Edge<T>> buildMST(final Vertex<T> startVertex) {
 		this.minGraph = new HashSet<>();
 		List<Vertex<T>> arrayOfVertexes = vertexes.keySet().stream().filter(t -> !t.equals(startVertex))
 				.collect(Collectors.toList());
