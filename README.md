@@ -26,7 +26,7 @@ The DFS algorithm is starting from starting point and go into the depth of the g
 until it reaches a dead end and then move up to the parent node.
 
 
---------------------------------------------------------------------------------------
+```
 Procedure PrimsMST(Graph):     // here Graph is a non-empty connected weighted graph
 Vnew[] = {x}                   // New subgraph Vnew with source node x
 Enew[] = {}
@@ -38,7 +38,8 @@ while Vnew is not equal to V
     add edge (u, v) to Enew
 end while
 Return Vnew and Enew
---------------------------------------------------------------------------------------
+
+```
 
 
 Java classes
