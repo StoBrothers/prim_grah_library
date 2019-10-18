@@ -73,35 +73,35 @@ mvn test
 This undirected graph with a weight of edges used in tests.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/prim_grah_library/pictures/blob/master/1.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/1.png)
 
 1. Defining the first edge with min weight for start vertex with number 1. The resulting edge is 1-5 with weight 2.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/2.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/2.png)
 
 2. Defining the next edge with min weight from edges of 2 visited vertices.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/3.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/3.png)
 
 3. Defining the next edge with min weight from edges of visited vertices.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/4.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/4.png)
 
 4. Defining the next edge with min weight from edges of visited vertices.
 --------------------------
 
-![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/5.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/5.png)
 
 5. Defining the next edge with min weight from edges of visited vertices. Edge (2-4) with weight 8 skipped because vertex number 2 visited earlier. 
 --------------------------
-![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/6.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/6.png)
 
 6. Result: Minimum Spanning Tree (MST). 
 --------------------------
-![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/7.png)
+![alt text](https://github.com/StoBrothers/prim_grah_library/blob/master/pictures/7.png)
 
 
 
