@@ -151,8 +151,10 @@ final class GraphImpl<T> implements Graph<T> {
 		}
 		return false;
 	}
+
 	/**
-	 * Implementation of Prim's algorithm for building path with min weight of edges (MST).
+	 * Implementation of Prim's algorithm for building path with min weight of edges
+	 * (MST).
 	 */
 	@Override
 	public Set<Edge<T>> buildMST(final Vertex<T> startVertex) {
@@ -164,47 +166,51 @@ final class GraphImpl<T> implements Graph<T> {
 		notVisitedVertex.addAll(arrayOfVertices);
 
 		Set<Vertex<T>> visitedVertices = new HashSet<>();
-		Set<Edge<T>> graph = new HashSet<>();
+		Set<Edge<T>> MSTgraph = new HashSet<>();// Result of Minimum Spanning Tree (MST)
 
 		Vertex<T> currentVertex = startVertex;
 		visitedVertices.add(currentVertex); // add vertex to visited set
 		Set<Edge<T>> edges = new TreeSet<>(new EdgeComparator<>());
 		edges.addAll(vertices.get(currentVertex)); // get edges for selected vertex)
 		
-		while (notVisitedVertex.size() != 0) {// checking not visited vertices
-			if (edges.size() > 0) {
-				Iterator<Edge<T>> iterator = edges.iterator();// iterator for sorted collection by MIN weight
-				Edge<T> currentMinEdge = null; //
-				while (iterator.hasNext()) {// check existing next edge with MIN weight
-					currentMinEdge = iterator.next();// get edge with MIN weight for selected vertex
-					Vertex<T> vertexStart = currentMinEdge.getStartVertex();// get first vertex
-					Vertex<T> vertexEnd = currentMinEdge.getEndVertex();// get second vertex
-					if (visitedVertices.contains(vertexStart) && visitedVertices.contains(vertexEnd)) {
-						// if both of vertices visited early then get next MIN edge
-						continue;
-					} else if (visitedVertices.contains(vertexStart)) {// if visited only first vertex not second
-						visitedVertices.add(currentMinEdge.getEndVertex());// add new visited vertex
-						notVisitedVertex.remove(currentMinEdge.getEndVertex());// remove this vertex from non visited
-																				// vertices
-						graph.add(currentMinEdge);// add this edge to the graph
-						edges.addAll(vertices.get(vertexEnd));// add all edges for new vertex to list
-						break;
-					} else if (visitedVertices.contains(vertexEnd)) {
-						visitedVertices.add(currentMinEdge.getStartVertex());
-						notVisitedVertex.remove(currentMinEdge.getStartVertex());
-						graph.add(currentMinEdge);
-						edges.addAll(vertices.get(vertexStart));// get edges for selected vertex
-						break;
-					} else {
-						// if both of vertices is not visited and don't have link to start vertex
-						continue;
-					}
+		if (edges.size() == 0) {
+			logger.error("This graph does not contain edges. Building MST is impossible.");
+			this.MST = MSTgraph;
+			return null;
+		}
+
+		while (notVisitedVertex.size() != 0) {// checking that not visited vertices existed
+			Iterator<Edge<T>> iterator = edges.iterator();// iterator for sorted collection by MIN weight
+			Edge<T> currentMinEdge = null; //
+			while (iterator.hasNext()) {// check existing next edge with MIN weight
+				currentMinEdge = iterator.next();// get edge with MIN weight for selected vertex
+				Vertex<T> vertexStart = currentMinEdge.getStartVertex();// get first vertex
+				Vertex<T> vertexEnd = currentMinEdge.getEndVertex();// get second vertex
+				if (visitedVertices.contains(vertexStart) && visitedVertices.contains(vertexEnd)) {
+					// if both of vertices visited early then get next MIN edge
+					continue;// go to the next edge
+				} else if (visitedVertices.contains(vertexStart)) {// if visited only first vertex not second
+					visitedVertices.add(currentMinEdge.getEndVertex());// add new visited vertex
+					notVisitedVertex.remove(currentMinEdge.getEndVertex());// remove this vertex from non visited
+																			// vertices
+					MSTgraph.add(currentMinEdge);// add this edge to the graph
+					edges.addAll(vertices.get(vertexEnd));// add all edges for new vertex to list
+					break; // go to the new list of edges
+				} else if (visitedVertices.contains(vertexEnd)) {// if visited only second vertex not first
+					visitedVertices.add(currentMinEdge.getStartVertex());// add new visited vertex
+					notVisitedVertex.remove(currentMinEdge.getStartVertex());// remove this vertex from non visited
+
+					MSTgraph.add(currentMinEdge);
+					edges.addAll(vertices.get(vertexStart));// get edges for selected vertex
+					break; // go to the new list of edges
+				} else {
+					// if both of vertices is not visited and don't have link to start vertex
+					continue; // go to the next edge
 				}
 			}
 		}
-
-		this.MST = graph;
-		return graph;
+		this.MST = MSTgraph;
+		return MSTgraph;
 	}
 
 	/**
