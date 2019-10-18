@@ -1,0 +1,41 @@
+2019-10-18 19:49:42 INFO  GraphUnitTest:70 - Result graph with MIN path:7
+2019-10-18 19:49:42 INFO  GraphUnitTest:99 - Result graph with MIN path for 7-2:
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=7)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=6)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=8)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=4)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=5)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=1)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:111 - Result path:[Edge(startVertex=Vertex(vertex=6), endVertex=Vertex(vertex=7), weight=1), Edge(startVertex=Vertex(vertex=6), endVertex=Vertex(vertex=8), weight=2), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=8), weight=9), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=5), weight=5), Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=5), weight=2), Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=2), weight=4)]
+2019-10-18 19:49:42 INFO  GraphUnitTest:70 - Result graph with MIN path:7
+2019-10-18 19:49:42 INFO  GraphUnitTest:77 - Building and checking graph with MIN path:
+2019-10-18 19:49:42 DEBUG GraphUnitTest:81 - Buided min path graph with edges:
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=5), weight=2)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=2), weight=4)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=3), endVertex=Vertex(vertex=4), weight=11)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=5), weight=5)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=8), weight=9)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=6), endVertex=Vertex(vertex=7), weight=1)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:82 - Edge(startVertex=Vertex(vertex=6), endVertex=Vertex(vertex=8), weight=2)
+2019-10-18 19:49:42 INFO  GraphUnitTest:70 - Result graph with MIN path:7
+2019-10-18 19:49:42 INFO  GraphUnitTest:121 - Result graph with MIN path for 1-6:
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=1)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=5)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=4)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=3)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=8)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:131 - Result path:[Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=5), weight=2), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=5), weight=5), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=8), weight=9), Edge(startVertex=Vertex(vertex=6), endVertex=Vertex(vertex=8), weight=2)]
+2019-10-18 19:49:42 INFO  GraphUnitTest:70 - Result graph with MIN path:7
+2019-10-18 19:49:42 INFO  GraphUnitTest:141 - Result graph with MIN path for 6-1:
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=6)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=7)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=8)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=4)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=5)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:152 - Result path:[Edge(startVertex=Vertex(vertex=6), endVertex=Vertex(vertex=8), weight=2), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=8), weight=9), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=5), weight=5), Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=5), weight=2)]
+2019-10-18 19:49:42 INFO  GraphUnitTest:70 - Result graph with MIN path:7
+2019-10-18 19:49:42 INFO  GraphUnitTest:162 - Result graph with MIN path for 3-1:
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=3)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=4)
+2019-10-18 19:49:42 DEBUG GraphImpl:123 - Visit:Vertex(vertex=5)
+2019-10-18 19:49:42 DEBUG GraphUnitTest:172 - Result path:[Edge(startVertex=Vertex(vertex=3), endVertex=Vertex(vertex=4), weight=11), Edge(startVertex=Vertex(vertex=4), endVertex=Vertex(vertex=5), weight=5), Edge(startVertex=Vertex(vertex=1), endVertex=Vertex(vertex=5), weight=2)]
